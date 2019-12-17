@@ -24,7 +24,7 @@ a) Toggle Buttons: [Link to Library](https://github.com/RiccardoMoro/RMSwitch "L
 
 
 
-This Application is created merely Developed with the intention of Sadqa-e-Jaariyah, So please feel free to contribute and report bugs :)
+This Application is merely Developed with the intention of Sadqa-e-Jaariyah, So please feel free to contribute and report bugs :)
 
 
 # LICENSE
