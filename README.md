@@ -28,5 +28,5 @@ This Application is created merely Developed with the intention of Sadqa-e-Jaari
 
 
 # LICENSE
-This code is licensed under The **GNU General Public License v3.0**.
+This code is licensed under The **Apache 2.0**.
 
