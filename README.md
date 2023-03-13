@@ -28,5 +28,5 @@ This Application is merely Developed with the intention of Sadqa-e-Jaariyah, So 
 
 
 # LICENSE
-This code is licensed under The **Apache 2.0**.
+This code is licensed under The **GPL-3.0**.
 
