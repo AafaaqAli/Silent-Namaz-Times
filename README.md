@@ -35,6 +35,6 @@ a) Toggle Buttons: [Link to Library](https://github.com/RiccardoMoro/RMSwitch "L
 ## NOTE
 This Application is merely Developed with the intention of Sadqa-e-Jaariyah, So please feel free to contribute and report bugs :)
 
-This code is licensed under The **GPLv3**.
+Licensed under The **GPLv3**.
 
 
