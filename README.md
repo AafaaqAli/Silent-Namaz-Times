@@ -1,6 +1,6 @@
 # SilentSalah
 
-![](Images/SalahAppMockup.png)
+![](app/Images/SalahAppMockup.png)
 
 # Working
 An application which turns the Phone state to Silent when Salah time reaches and turn the phone state back to normal when Salah time ends.
