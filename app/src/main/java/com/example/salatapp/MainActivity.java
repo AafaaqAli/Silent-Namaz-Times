@@ -1216,10 +1216,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void getStateChangePermissionRequest() {
-        NotificationManager notificationManager =
-                (NotificationManager) MainActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) MainActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        assert notificationManager != null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && !notificationManager.isNotificationPolicyAccessGranted()) {
 
@@ -1249,7 +1247,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected Void doInBackground(Void... params) {
             getIgnoreBatteryOptimizationRequest();
-            finish();
             return null;
         }
 
