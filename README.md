@@ -23,6 +23,19 @@ a) Toggle Buttons: [Link to Library](https://github.com/RiccardoMoro/RMSwitch "L
 [Apk Source File](https://www.dropbox.com/s/m121im40oecshn7/SilentSalah.apk?dl=0)
 
 
+#Road map
+1) Migrate to Kotlin
+2) Fix issues 
+   a) Does not show notification
+   b) Does not change Ringer status
+   c) Update date picker and business logic {Working but not good}
+3) Update UI
+4) Add Salah time automation based on location & date/time
+5) Notification Management,
+6) Remove Service in favour of WorkManager
+7) Separation of concerns
+
+
 
 This Application is merely Developed with the intention of Sadqa-e-Jaariyah, So please feel free to contribute and report bugs :)
 
