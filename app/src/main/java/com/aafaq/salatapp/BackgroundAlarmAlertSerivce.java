@@ -1,6 +1,5 @@
-package com.example.salatapp;
+package com.aafaq.salatapp;
 
-import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -24,8 +23,6 @@ public class BackgroundAlarmAlertSerivce extends Service {
         player.setLooping(false); // Set looping
         player.setVolume(100, 100);
         player.start();
-
-
     }
 
     public int onStartCommand(Intent intent, int flags, int startId) {

@@ -1,4 +1,6 @@
-package com.example.salatapp;
+package com.aafaq.salatapp;
+
+import static android.app.PendingIntent.FLAG_MUTABLE;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -34,8 +36,8 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import static com.example.salatapp.R.drawable.button_shape_checked;
-import static com.example.salatapp.R.drawable.button_shape_un_checked;
+import static com.aafaq.salatapp.R.drawable.button_shape_checked;
+import static com.aafaq.salatapp.R.drawable.button_shape_un_checked;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
 
@@ -111,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         audioManager = (AudioManager) MainActivity.this.getSystemService(Context.AUDIO_SERVICE);
         sharedPreferences = getApplicationContext().getSharedPreferences(String.valueOf(R.string.PREFERENC_TAG), Context.MODE_PRIVATE);
-        prefs = getSharedPreferences("com.example.salatapp", MODE_PRIVATE);
+        prefs = getSharedPreferences("com.aafaq.salatapp", MODE_PRIVATE);
 
         editor = sharedPreferences.edit();
 
@@ -519,11 +521,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         final Intent intent = new Intent(this, AlarmReceiver.class);
-        PendingIntent startPendingIntent = PendingIntent.getBroadcast(this, startID, intent, 0);
-        PendingIntent endPendingIntent = PendingIntent.getBroadcast(this, endID, intent, 0);
+        PendingIntent startPendingIntent = PendingIntent.getBroadcast(this, startID, intent, PendingIntent.FLAG_MUTABLE);
+        PendingIntent endPendingIntent = PendingIntent.getBroadcast(this, endID, intent, PendingIntent.FLAG_MUTABLE);
 
         //for alert
-        PendingIntent alarmAlertPendingIntent = PendingIntent.getBroadcast(this, endID, intent, 0);
+        PendingIntent alarmAlertPendingIntent = PendingIntent.getBroadcast(this, endID, intent, PendingIntent.FLAG_MUTABLE);
 
         alarmManager.cancel(startPendingIntent);
         alarmManager.cancel(endPendingIntent);
@@ -544,7 +546,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         assert alarmManager != null;
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), (SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_DAY), alarmIntent);
-        //alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
