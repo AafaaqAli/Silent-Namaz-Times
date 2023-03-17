@@ -1,14 +1,22 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
 android {
-    compileSdkVersion 33
-    buildToolsVersion '28.0.3'
+    namespace 'com.aafaq.salatapp'
+
+    compileSdkVersion buildConfigs.compileSdk
 
     defaultConfig {
         applicationId "com.aafaq.salatapp"
-        minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
+
+        minSdkVersion buildConfigs.minimumSdk
+        targetSdkVersion buildConfigs.targetSdk
+        versionCode buildConfigs.code
+        versionName buildConfigs.name
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -19,6 +27,11 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -26,27 +39,46 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(path: ':core')
 
-    implementation 'com.rm:rmswitch:1.2.2'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:percent:28.0.0'
-    implementation "androidx.work:work-runtime:2.8.0"
-    //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    //test
+    testImplementation test.junit
+    androidTestImplementation test.extjnit
+    androidTestImplementation test.espresso
 
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:design:28.0.0'
+    //androidx
+    implementation androidx.appcompact
+    implementation androidx.constraintLayout
+    implementation androidx.material
+    implementation androidx.percentLayout
+    implementation androidx.core
+    implementation androidx.activity
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    //kotlin
+    implementation androidx.lifecycle
+    implementation androidx.livedata
+    implementation androidx.viewmodel
+    implementation androidx.multidex
 
-    implementation 'com.android.support:multidex:1.0.3'
+    //legacy support
+    implementation androidx.legacy_support
 
-    //moshi converter
-    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    //fragment
+    implementation androidx.navigation
+    implementation androidx.navigationui
+    implementation androidx.fragment
 
+    //only
+    implementation external.only
+
+    //lottie
+    implementation external.lottie
+
+    //glide
+    implementation external.glide
+    annotationProcessor external.glidecompiler
+
+    //extras
+    implementation external.shimmer
+    implementation external.rmswitch
 }

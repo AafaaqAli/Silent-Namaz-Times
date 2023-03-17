@@ -7,3 +7,6 @@ pluginManagement {
 }
 
 include ':app'
+include ':network'
+include ':database'
+include ':core'

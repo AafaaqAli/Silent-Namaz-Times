@@ -1,0 +1,101 @@
+ext {
+
+    buildConfigs = [
+            buildtools: "28.0.3",
+            compileSdk: 33,
+            minimumSdk: 21,
+            targetSdk: 33,
+            code: 1,
+            name: "1.0"
+    ]
+
+    def versions = [
+            //third party
+            lottie            : "5.2.0",
+            only              : "1.0.8",
+            rmswitch          : "1.2.2",
+            glide             : "4.14.0",
+            glidecompiler     : "4.14.0",
+            shimmer           : "0.5.0",
+
+            //androidX
+            appcompact        : "1.6.1",
+            runtimework       : "2.8.0",
+            constraintlayout  : "2.1.4",
+            material          : "1.8.0",
+            percentlayout     : "1.0.0",
+            lifecycle         : "2.2.0",
+            viewmodel         : "2.6.0",
+            livedata          : "2.6.0",
+            navigation        : "2.5.3",
+            navigationui      : "2.5.3",
+            activity          : "1.6.1",
+            core              : "1.9.0",
+            fragment          : "1.5.5",
+            multidex          : "1.0.3",
+            legacy_support    : "1.0.0",
+
+            // tests
+            junit: "4.13.2",
+            extjnit           : "1.1.5",
+            espresso          : "3.5.1",
+
+            //network
+            moshi             : "2.4.0",
+            retrofit          : "2.9.0",
+            okhttp_interceptor: "5.0.0-alpha.2",
+
+            //db
+            room_kapt         : "2.5.0",
+            room_runtime      : "2.5.0",
+            room_ktx          : "2.5.0",
+
+            //dagger
+            hilt              : "2.44",
+            hiltkapt          : "2.44"
+
+    ]
+
+    androidx = [
+            appcompact      : "androidx.appcompat:appcompat:${versions.appcompact}",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
+            material        : "com.google.android.material:material:${versions.material}",
+            percentLayout   : "androidx.percentlayout:percentlayout:${versions.percentlayout}",
+            lifecycle       : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}",
+            livedata        : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.livedata}",
+            viewmodel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewmodel}",
+            navigation      : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+            navigationui    : "androidx.navigation:navigation-ui-ktx:${versions.navigationui}",
+            activity        : "androidx.activity:activity-ktx:${versions.activity}",
+            core            : "androidx.core:core-ktx:${versions.core}",
+            fragment        : "androidx.fragment:fragment-ktx:${versions.fragment}",
+            multidex        : "com.android.support:multidex:${versions.multidex}",
+            room_runtime    : "androidx.room:room-runtime:${versions.room_runtime}",
+            room_ktx        : "androidx.room:room-ktx:${versions.room_ktx}",
+            room_kapt       : "androidx.room:room-compiler:${versions.room_kapt}",
+            legacy_support  : "androidx.legacy:legacy-support-v4:${versions.legacy_support}",
+    ]
+
+    test = [
+            junit: "junit:junit:${versions.junit}",
+            extjnit           : "androidx.test.ext:junit:${versions.extjnit}",
+            espresso          : "androidx.test.espresso:espresso-core:${versions.espresso}",
+    ]
+
+    dagger = [
+            hilt    : "com.google.dagger:hilt-android:${versions.hilt}",
+            hiltkapt: "com.google.dagger:hilt-compiler:${versions.hiltkapt}",
+    ]
+
+    external = [
+            only              : "com.github.skydoves:only:${versions.only}",
+            glide             : "com.github.bumptech.glide:glide:${versions.glide}",
+            glidecompiler     : "com.github.bumptech.glide:compiler:${versions.glidecompiler}",
+            lottie            : "com.airbnb.android:lottie:${versions.lottie}",
+            shimmer           : "com.facebook.shimmer:shimmer:${versions.shimmer}",
+            rmswitch          : "com.rm:rmswitch:${versions.rmswitch}",
+            moshi             : "com.squareup.retrofit2:converter-moshi:${versions.moshi}",
+            retrofit          : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+            okhttp_interceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_interceptor}",
+    ]
+}
