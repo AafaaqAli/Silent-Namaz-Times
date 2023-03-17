@@ -1,4 +1,4 @@
-package com.example.salatapp;
+package com.aafaq.salatapp;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -74,7 +74,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     public void azanAlert() {
-        Intent svc=new Intent(mContext, BackgroundAlarmAlertSerivce.class);
+        Intent svc = new Intent(mContext, BackgroundAlarmAlertSerivce.class);
         mContext.startService(svc);
     }
 

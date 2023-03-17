@@ -4,6 +4,7 @@
 
 
 ## Road map
+
 1) Migrate to Kotlin
 2) Fix issues 
    1) Does not show notification

@@ -1,4 +1,4 @@
-package com.example.salatapp;
+package com.aafaq.salatapp;
 
 import android.content.Context;
 
