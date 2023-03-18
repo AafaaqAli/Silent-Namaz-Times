@@ -81,4 +81,8 @@ dependencies {
     //extras
     implementation external.shimmer
     implementation external.rmswitch
+
+    //multi density
+    implementation external.ssp
+    implementation external.sdp
 }

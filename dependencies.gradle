@@ -4,9 +4,9 @@ ext {
             buildtools: "28.0.3",
             compileSdk: 33,
             minimumSdk: 21,
-            targetSdk: 33,
-            code: 1,
-            name: "1.0"
+            targetSdk : 33,
+            code      : 1,
+            name      : "1.0"
     ]
 
     def versions = [
@@ -36,7 +36,7 @@ ext {
             legacy_support    : "1.0.0",
 
             // tests
-            junit: "4.13.2",
+            junit             : "4.13.2",
             extjnit           : "1.1.5",
             espresso          : "3.5.1",
 
@@ -52,8 +52,11 @@ ext {
 
             //dagger
             hilt              : "2.44",
-            hiltkapt          : "2.44"
+            hiltkapt          : "2.44",
 
+            //multi density
+            ssp               : "1.1.0",
+            sdp               : "1.1.0",
     ]
 
     androidx = [
@@ -77,9 +80,9 @@ ext {
     ]
 
     test = [
-            junit: "junit:junit:${versions.junit}",
-            extjnit           : "androidx.test.ext:junit:${versions.extjnit}",
-            espresso          : "androidx.test.espresso:espresso-core:${versions.espresso}",
+            junit   : "junit:junit:${versions.junit}",
+            extjnit : "androidx.test.ext:junit:${versions.extjnit}",
+            espresso: "androidx.test.espresso:espresso-core:${versions.espresso}",
     ]
 
     dagger = [
@@ -97,5 +100,7 @@ ext {
             moshi             : "com.squareup.retrofit2:converter-moshi:${versions.moshi}",
             retrofit          : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
             okhttp_interceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_interceptor}",
+            ssp               : "com.intuit.ssp:ssp-android:${versions.ssp}",
+            sdp               : "com.intuit.sdp:sdp-android:${versions.sdp}"
     ]
 }
