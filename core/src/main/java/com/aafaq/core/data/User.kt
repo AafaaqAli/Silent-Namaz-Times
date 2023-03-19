@@ -1,4 +1,4 @@
-package com.aafaq.network.data
+package com.aafaq.core.data
 
 sealed class Gender{
     object MALE: Gender()
@@ -6,8 +6,8 @@ sealed class Gender{
 
     data class FEMALE(
         var isActive: Boolean? = false,
-        var startDate: Long? = null,
-        var endDate: Long? = null,
+        var startFreezeDate: Long? = null,
+        var endFreezeDate: Long? = null,
         var freezeDuration: Int? = null
     ): Gender()
 }
