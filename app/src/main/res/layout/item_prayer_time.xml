@@ -13,12 +13,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_110sdp"
             android:layout_gravity="center"
             android:orientation="horizontal"
             android:padding="@dimen/_8sdp">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="day_night.json"
+                app:lottie_loop="true" />
+
+            <RelativeLayout
+                android:id="@+id/button_set_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/ripple_click"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:paddingBottom="@dimen/_3sdp">
+
+                <TextView
+                    android:id="@+id/text_view_set_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/opensans_bold"
+                    android:text="CONFIRMED"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    tools:text="CONFIRMED" />
+            </RelativeLayout>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
@@ -114,30 +149,6 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <RelativeLayout
-                android:id="@+id/button_set_state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:background="@drawable/ripple_click"
-                android:paddingStart="@dimen/_6sdp"
-                android:paddingTop="@dimen/_3sdp"
-                android:paddingEnd="@dimen/_6sdp"
-                android:paddingBottom="@dimen/_3sdp">
-
-                <TextView
-                    android:id="@+id/text_view_set_state"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/opensans_bold"
-                    android:text="CONFIRMED"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10ssp"
-                    tools:text="CONFIRMED" />
-            </RelativeLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
