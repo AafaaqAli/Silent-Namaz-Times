@@ -11,10 +11,16 @@ open class OpenSansMedium(context: Context, attributeSet: AttributeSet) : AppCom
 
     init {
         applyFont()
+        setHeadingAttributes()
     }
 
     private fun applyFont() {
         val typeface = ResourcesCompat.getFont(context, R.font.opensans_medium)
         setTypeface(typeface)
+    }
+
+    private fun setHeadingAttributes(){
+        this.setTextColor(resources.getColor(R.color.black))
+        this.textSize = resources.getDimension(com.intuit.ssp.R.dimen._4ssp)
     }
 }
