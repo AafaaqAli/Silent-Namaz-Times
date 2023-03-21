@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'com.aafaq.network'
+
+    compileSdkVersion buildConfigs.compileSdk
+
+    defaultConfig {
+        minSdkVersion buildConfigs.minimumSdk
+        targetSdkVersion buildConfigs.targetSdk
+        versionCode buildConfigs.code
+        versionName buildConfigs.name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    //test
+    testImplementation test.junit
+    androidTestImplementation test.extjnit
+    androidTestImplementation test.espresso
+
+    //androidx
+    implementation androidx.appcompact
+    implementation androidx.material
+
+    //network
+    api external.retrofit
+    api external.okhttp_interceptor
+    api external.moshi
+
+}
