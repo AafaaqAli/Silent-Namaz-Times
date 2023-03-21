@@ -17,7 +17,7 @@ interface ApiService {
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double,
         @Query("method") method: Double,
-    )
+    ): GeneralResponse
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_CALENDAR_BY_ADDRESS)
     suspend fun getCalendarByAddress(
@@ -25,7 +25,7 @@ interface ApiService {
         @Path("month") date: String,
         @Query("address") address: String,
         @Query("method") method: Double,
-    )
+    ): GeneralResponse
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_CALENDAR_BY_CITY)
     suspend fun getCalendarByCity(
@@ -33,7 +33,7 @@ interface ApiService {
         @Path("month") date: String,
         @Query("city") city: String,
         @Query("method") method: String,
-    )
+    ): GeneralResponse
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_HIJRI_CALENDAR_BY_ADDRESS)
     suspend fun getHijriCalendarByAddress(
