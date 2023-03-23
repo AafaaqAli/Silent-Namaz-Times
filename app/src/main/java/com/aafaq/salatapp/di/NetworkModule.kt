@@ -3,6 +3,7 @@ package com.aafaq.salatapp.di
 import com.aafaq.network.ApiService
 import com.aafaq.network.domain.usecases.*
 import com.aafaq.network.domain.utils.NetworkConstants
+import com.squareup.moshi.Moshi
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,6 +12,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 object NetworkModule {
+    @Singleton
+    @Provides
+    fun providesMoshi() = Moshi.Builder().build()
+
+
     @Singleton
     @Provides
     fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()
@@ -28,8 +34,8 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(MoshiConverterFactory.create())
+    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(NetworkConstants.AlAdan.BASE_URL)
         .client(okHttpClient)
         .build()

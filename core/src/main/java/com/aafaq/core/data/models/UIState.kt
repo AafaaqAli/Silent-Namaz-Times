@@ -1,4 +1,4 @@
-package com.aafaq.core.data
+package com.aafaq.core.data.models
 
 import com.aafaq.network.data.models.GeneralResponse
 
