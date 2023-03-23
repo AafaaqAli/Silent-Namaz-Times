@@ -1,9 +1,8 @@
-package com.aafaq.network.usecases
+package com.aafaq.network.domain.usecases
 
 import com.aafaq.network.ApiService
-import com.aafaq.network.data.GeneralResponse
-import com.aafaq.network.data.namaz.Location
-import com.aafaq.network.domain.utils.NetworkConstants
+import com.aafaq.network.data.models.GeneralResponse
+import com.aafaq.network.data.models.Salah.Methods
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -14,13 +13,13 @@ class GetHijriCalendarByAddressUseCase (
         year: Int,
         month: Int?,
         address: String,
-        method: NetworkConstants.AlAdan.Methods,
+        method: Methods,
     ): Flow<GeneralResponse> {
         return flowOf(apiService.getHijriCalendarByAddress(
             year = year,
             month = month,
             address = address,
-            method.numberValue
+            method = method.numberValue
         ))
     }
 }

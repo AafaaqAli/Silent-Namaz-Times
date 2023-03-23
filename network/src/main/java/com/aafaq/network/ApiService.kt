@@ -1,6 +1,6 @@
 package com.aafaq.network
 
-import com.aafaq.network.data.GeneralResponse
+import com.aafaq.network.data.models.GeneralResponse
 import com.aafaq.network.domain.utils.NetworkConstants
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,7 +1,7 @@
-package com.aafaq.network.usecases
+package com.aafaq.network.domain.usecases
 
 import com.aafaq.network.ApiService
-import com.aafaq.network.data.GeneralResponse
+import com.aafaq.network.data.models.GeneralResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

@@ -1,9 +1,8 @@
-package com.aafaq.network.usecases
+package com.aafaq.network.domain.usecases
 
 import com.aafaq.network.ApiService
-import com.aafaq.network.data.GeneralResponse
-import com.aafaq.network.data.namaz.Location
-import com.aafaq.network.domain.utils.NetworkConstants
+import com.aafaq.network.data.models.GeneralResponse
+import com.aafaq.network.data.models.Salah.Methods
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -11,14 +10,18 @@ class GetCalendarByCityUseCase (
     private val apiService: ApiService
 ) {
     suspend fun execute(
-        year: String,
-        month: String,
+        year: Int,
+        month: Int?,
         city: String,
-        method: NetworkConstants.AlAdan.Methods,
+        state: String,
+        country: String,
+        method: Methods,
     ): Flow<GeneralResponse> {
         return flowOf(apiService.getCalendarByCity(
             year = year,
             month = month,
+            country = country,
+            state = state,
             city = city,
             method = method.numberValue
         ))

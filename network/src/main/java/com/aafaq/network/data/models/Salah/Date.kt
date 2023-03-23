@@ -1,4 +1,4 @@
-package com.aafaq.network.data.namaz
+package com.aafaq.network.data.models.Salah
 
 data class Date(
     var readable  : String?    = null,

@@ -1,9 +1,9 @@
-package com.aafaq.network.usecases
+package com.aafaq.network.domain.usecases
 
 import com.aafaq.network.ApiService
-import com.aafaq.network.data.GeneralResponse
-import com.aafaq.network.data.namaz.Location
-import com.aafaq.network.domain.utils.NetworkConstants
+import com.aafaq.network.data.models.GeneralResponse
+import com.aafaq.network.data.models.Salah.Location
+import com.aafaq.network.data.models.Salah.Methods
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -11,9 +11,9 @@ class GetPrayerTimeUseCase (
     private val apiService: ApiService
 ) {
     suspend fun execute(
-       date: String,
-       location: Location,
-        method: NetworkConstants.AlAdan.Methods,
+        date: String,
+        location: Location,
+        method: Methods
     ): Flow<GeneralResponse> {
         return flowOf(apiService.getPrayerTime(
             date = date,
