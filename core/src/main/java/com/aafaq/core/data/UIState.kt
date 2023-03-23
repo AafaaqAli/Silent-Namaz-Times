@@ -1,6 +1,6 @@
 package com.aafaq.core.data
 
-import com.aafaq.network.data.GeneralResponse
+import com.aafaq.network.data.models.GeneralResponse
 
 sealed class UIState{
     data class NoInternet(var networkError: String) : UIState()

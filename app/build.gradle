@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
 }
 
@@ -40,6 +41,10 @@ android {
 
 dependencies {
     api project(path: ':core')
+
+    //hilt
+    implementation dagger.hilt
+    kapt dagger.hiltkapt
 
     //test
     testImplementation test.junit
