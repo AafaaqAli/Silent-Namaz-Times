@@ -1,4 +1,4 @@
-package com.aafaq.salatapp.presentation.fragments
+package com.aafaq.salatapp.presentation.fragments.home
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
-import com.aafaq.salatapp.R
 import com.aafaq.salatapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

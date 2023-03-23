@@ -1,4 +1,4 @@
-package com.aafaq.core.data
+package com.aafaq.core.data.models
 
 sealed class Gender{
     object MALE: Gender()

@@ -1,4 +1,4 @@
-package com.aafaq.salatapp.presentation.fragments
+package com.aafaq.salatapp.presentation.fragments.home
 
 import androidx.lifecycle.ViewModel
 
