@@ -1,5 +1,9 @@
 
 buildscript {
+    dependencies {
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.45'
+    }
+
     repositories {
         jcenter()
         google()
@@ -20,7 +24,7 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
 }
 
-apply from: "dependencies.gradle"
+apply from: "buildsystem/dependencies.gradle"
 
 allprojects {
     repositories {

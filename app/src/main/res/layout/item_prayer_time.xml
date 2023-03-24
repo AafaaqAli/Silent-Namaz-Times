@@ -15,6 +15,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/salah_item_root"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_110sdp"
             android:layout_gravity="center"
@@ -22,13 +23,12 @@
             android:padding="@dimen/_8sdp">
 
             <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_animation_day_night"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="day_night.json"
-                app:lottie_loop="true" />
+                app:lottie_fileName="day_night.json"/>
 
             <RelativeLayout
                 android:id="@+id/button_set_state"
@@ -103,13 +103,14 @@
                     android:orientation="vertical">
 
                     <com.aafaq.salatapp.presentation.views.text.OpenSansBold
-                        android:id="@+id/heading"
+                        android:id="@+id/salah_heading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Fajar"
                         tools:text="Fajar" />
 
                     <com.aafaq.salatapp.presentation.views.text.OpenSansMedium
+                        android:id="@+id/text_view_salah_time_remaining"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/heading"
