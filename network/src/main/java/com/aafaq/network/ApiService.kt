@@ -1,6 +1,6 @@
 package com.aafaq.network
 
-import com.aafaq.network.data.GeneralResponse
+import com.aafaq.network.data.models.GeneralResponse
 import com.aafaq.network.domain.utils.NetworkConstants
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,8 +12,8 @@ import retrofit2.http.Query
 interface ApiService {
     @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_CALENDAR)
     suspend fun getCalendar(
-        @Path("year") year: String,
-        @Path("month") date: String,
+        @Path("year") year: Int,
+        @Path("month") month: Int?,
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double,
         @Query("method") method: Double,
@@ -21,43 +21,58 @@ interface ApiService {
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_CALENDAR_BY_ADDRESS)
     suspend fun getCalendarByAddress(
-        @Path("year") year: String,
-        @Path("month") date: String,
         @Query("address") address: String,
-        @Query("method") method: Double,
+        @Path("month") month: Int?,
+        @Path("year") year: Int,
+        @Query("method") method: Double
     ): GeneralResponse
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_CALENDAR_BY_CITY)
     suspend fun getCalendarByCity(
-        @Path("year") year: String,
-        @Path("month") date: String,
         @Query("city") city: String,
-        @Query("method") method: String,
+        @Query("country") country: String,
+        @Query("state") state: String,
+        @Path("month") month: Int?,
+        @Path("year") year: Int,
+        @Query("method") method: Double,
+    ): GeneralResponse
+
+    @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_HIJRI_CALENDAR_BY_ADDRESS)
+    suspend fun getHijriCalendar(
+        @Path("month") month: Int?,
+        @Path("year") year: Int,
+        @Query("latitude") latitude: Double,
+        @Query("longitude") longitude: Double,
+        @Query("method") method: Double,
     ): GeneralResponse
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_HIJRI_CALENDAR_BY_ADDRESS)
     suspend fun getHijriCalendarByAddress(
-        @Path("year") year: String,
-        @Path("month") date: String,
+        @Path("month") month: Int?,
+        @Path("year") year: Int,
         @Query("address") address: String,
         @Query("method") method: Double,
     ): GeneralResponse
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_TIME_HIJRI_CALENDAR_BY_CITY)
     suspend fun getHijriCalendarByCity(
-        @Path("year") year: String,
-        @Path("month") date: String,
         @Query("city") city: String,
         @Query("country") country: String,
-        @Query("method") method: Double,
+        @Query("state") state: String,
+        @Path("month") month: Int?,
+        @Path("year") year: Int,
+        @Query("method") method: Double
     ): GeneralResponse
 
+    /**
+     * Not being used currently
+     * */
     @GET(NetworkConstants.AlAdan.EndPoints.GET_PRAYER_TIME_CALCULATION_METHODS)
     suspend fun getPrayerTimeCalculationMethods()
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_PRAYER_TIMING)
     suspend fun getPrayerTime(
-        @Path("date") year: String,
+        @Path("date") date: String,
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double,
         @Query("method") method: Double,
@@ -66,14 +81,17 @@ interface ApiService {
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_PRAYER_TIMING_BY_ADDRESS)
     suspend fun getPrayerTimeByAddress(
-        @Path("date") year: String,
+        @Query("date") date: String,
         @Query("address") address: String,
+        @Query("method") method: Double,
     ): GeneralResponse
 
     @GET(NetworkConstants.AlAdan.EndPoints.GET_PRAYER_TIMING_BY_CITY)
     suspend fun getPrayerTimeByCity(
-        @Path("date") year: String,
+        @Query("date") date: String,
         @Query("city") city: String,
+        @Query("country") country: String,
+        @Query("state") state: String,
         @Query("method") method: Double,
     ): GeneralResponse
 }

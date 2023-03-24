@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Silent Salat</string>
+    <string name="app_name_debug">Silent Salat_debug</string>
+    <string name="app_name_qa">Silent Salat_qa</string>
 
     <string name="default_text">00:00</string>
 
