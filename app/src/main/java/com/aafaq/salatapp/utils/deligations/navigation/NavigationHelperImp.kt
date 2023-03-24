@@ -5,11 +5,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.aafaq.salatapp.R
 
 
-enum class Navigation{
-    HOME(),
-    SETTING(),
-}
-
 class NavigationHelperImp: INavigationHelper {
     lateinit var activity: AppCompatActivity
 
@@ -40,4 +35,9 @@ class NavigationHelperImp: INavigationHelper {
             e.printStackTrace()
         }
     }
+}
+
+enum class Navigation{
+    HOME(),
+    SETTING(),
 }

@@ -1,4 +1,4 @@
-package com.aafaq.network.data.models.Salah
+package com.aafaq.network.data.models.salah
 
 data class Timings(
     var Fajr: String? = null,

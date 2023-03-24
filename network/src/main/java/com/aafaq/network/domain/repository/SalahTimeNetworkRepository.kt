@@ -1,8 +1,8 @@
 package com.aafaq.network.domain.repository
 
 import com.aafaq.network.data.models.GeneralResponse
-import com.aafaq.network.data.models.Salah.Location
-import com.aafaq.network.data.models.Salah.Methods
+import com.aafaq.network.data.models.salah.Location
+import com.aafaq.network.data.models.salah.Methods
 import kotlinx.coroutines.flow.Flow
 
 interface SalahTimeNetworkRepository {

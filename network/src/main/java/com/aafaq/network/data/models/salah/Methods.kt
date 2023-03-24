@@ -1,4 +1,4 @@
-package com.aafaq.network.data.models.Salah
+package com.aafaq.network.data.models.salah
 
 enum class Methods(val methodName: String, val numberValue: Double){
     JAFARI("Shia Ithna-Ansari", 0.0),

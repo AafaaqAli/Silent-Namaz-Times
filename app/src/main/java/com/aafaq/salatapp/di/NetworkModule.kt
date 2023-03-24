@@ -1,16 +1,23 @@
 package com.aafaq.salatapp.di
 
 import com.aafaq.network.ApiService
+import com.aafaq.network.data.repository.SalahNetworkRepositoryImp
+import com.aafaq.network.domain.repository.SalahTimeNetworkRepository
 import com.aafaq.network.domain.usecases.*
 import com.aafaq.network.domain.utils.NetworkConstants
 import com.squareup.moshi.Moshi
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
+@InstallIn(SingletonComponent::class)
+@Module
 object NetworkModule {
     @Singleton
     @Provides
@@ -54,5 +61,11 @@ object NetworkModule {
             GetPrayerTimeByCityUseCase(apiService),
             GetPrayerTimeUseCase(apiService)
         )
+    }
+
+    @Singleton
+    @Provides
+    fun providesHomeSalahNetworkRepository(useCases: UseCases): SalahTimeNetworkRepository {
+        return SalahNetworkRepositoryImp(useCases)
     }
 }
