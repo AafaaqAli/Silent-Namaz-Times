@@ -4,6 +4,7 @@
     tools:context=".presentation.fragments.home.HomeFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.aafaq.salatapp.presentation.fragments.home.HomeViewModel" />
@@ -13,9 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-      <com.aafaq.salatapp.presentation.views.SalahTimingView
-          android:id="@+id/salah_time_view"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"/>
+        <ProgressBar
+            android:indeterminateTint="@color/blue_darker"
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+        <com.aafaq.salatapp.presentation.views.SalahTimingView
+            android:id="@+id/salah_time_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 </layout>

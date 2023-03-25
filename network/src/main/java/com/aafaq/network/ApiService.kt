@@ -2,6 +2,8 @@ package com.aafaq.network
 
 import com.aafaq.network.data.models.GeneralResponse
 import com.aafaq.network.domain.utils.NetworkConstants
+import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

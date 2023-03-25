@@ -1,5 +1,8 @@
 package com.aafaq.network.data.models.salah
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = false)
 enum class Methods(val methodName: String, val numberValue: Double){
     JAFARI("Shia Ithna-Ansari", 0.0),
     KARACHI("University of Islamic Sciences, Karachi", 1.0),

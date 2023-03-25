@@ -6,6 +6,7 @@ import com.aafaq.network.data.models.salah.Location
 import com.aafaq.network.data.models.salah.Methods
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import retrofit2.Response
 
 class GetCalendarUseCase (
     private val apiService: ApiService

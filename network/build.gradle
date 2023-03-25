@@ -102,9 +102,14 @@ dependencies {
     //network
     api external.retrofit
     api external.okhttp_interceptor
+
+
     api external.moshi
+    api external.moshi_dependency
+    api external.moshi_kotlin
 
     //hilt
     implementation dagger.hilt
     kapt dagger.hiltkapt
+
 }
