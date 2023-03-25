@@ -58,6 +58,8 @@ ext {
             //multi density
             ssp               : "1.1.0",
             sdp               : "1.1.0",
+
+            easy_permission   : "3.0.0"
     ]
 
     androidx = [
@@ -104,6 +106,7 @@ ext {
             retrofit          : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
             okhttp_interceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_interceptor}",
             ssp               : "com.intuit.ssp:ssp-android:${versions.ssp}",
-            sdp               : "com.intuit.sdp:sdp-android:${versions.sdp}"
+            sdp               : "com.intuit.sdp:sdp-android:${versions.sdp}",
+            easy_permission   : "pub.devrel:easypermissions:${versions.easy_permission}"
     ]
 }
