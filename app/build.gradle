@@ -102,10 +102,6 @@ android {
 dependencies {
     api project(path: ':core')
 
-    //hilt
-    implementation dagger.hilt
-    kapt dagger.hiltkapt
-
     //test
     testImplementation test.junit
     androidTestImplementation test.extjnit
@@ -133,6 +129,10 @@ dependencies {
     implementation androidx.navigationui
     implementation androidx.fragment
 
+    //hilt
+    implementation dagger.hilt
+    kapt dagger.hiltkapt
+
     //only
     implementation external.only
 
@@ -150,4 +150,7 @@ dependencies {
     //multi density
     implementation external.ssp
     implementation external.sdp
+
+    //easy permission
+    implementation external.easy_permission
 }

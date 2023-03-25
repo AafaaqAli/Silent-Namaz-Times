@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import okhttp3.internal.http.hasBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,18 +32,13 @@ class HomeViewModel @Inject constructor(
     private val _state = MutableStateFlow<UIState>(UIState.Empty)
     val homeStateFlow: SharedFlow<UIState> = _state
 
-    fun getCalender(
-        year: Int,
-        month: Int?,
-        location: Location,
-        method: Methods,
-    ) {
+    fun getCalender() {
         viewModelScope.launch {
             /**
              * Set initial State to Loading
              * */
             _state.value = UIState.Loading
-            networkRepository.getCalendar(year, month, location, method).apply {
+            networkRepository.getCalendar(2023, 5, Location(33.6844, 73.0479), Methods.JAFARI).apply {
                 this.collectLatest {
                     if (it.code == 200) {
                         _state.value = UIState.Success(
@@ -57,6 +51,7 @@ class HomeViewModel @Inject constructor(
                     }
                 }
             }
+            _state.value = UIState.Empty
         }
     }
 }

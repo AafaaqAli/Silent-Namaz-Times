@@ -52,39 +52,34 @@ class HomeFragment: Fragment(), INavigationHelper by NavigationHelperImp() {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding.lifecycleOwner = this
 
+        binding.viewModel = this.viewModel
+
         handleUiState()
+        initViews()
+
+    }
+
+    private fun initViews(){
+        viewModel.getCalender()
     }
 
     private fun handleUiState() {
         lifecycleScope.launch {
-            viewModel.homeStateFlow.collectLatest { state ->
+            viewModel.homeStateFlow.collectLatest{ state ->
                 when (state) {
                     is UIState.Empty -> {
-                        binding.progressBar.isVisible = false
-                        /**
-                         * do API Call when started
-                         * */
-
-                        /**
-                         * TODO Create a Util for creating Params
-                         * */
-                        viewModel.getCalender(
-                            2023,
-                            5,
-                            Location(
-                                33.6844,
-                                73.0479
-                            ),
-                            Methods.JAFARI
-                        )
+                        binding.swipeRefreshLayout.isRefreshing = false
+                        binding.viewClickController.isVisible = false
                     }
 
                     is UIState.Loading -> {
-                        binding.progressBar.isVisible = true
+                        binding.swipeRefreshLayout.isRefreshing = true
+                        binding.viewClickController.isVisible = true
                     }
 
                     is UIState.Success -> {
-                        binding.progressBar.isVisible = false
+                        binding.swipeRefreshLayout.isRefreshing = false
+                        binding.viewClickController.isVisible = false
 
                         state.response?.data?.let {
                             initSalahTimeView(it)
@@ -92,8 +87,8 @@ class HomeFragment: Fragment(), INavigationHelper by NavigationHelperImp() {
                     }
 
                     is UIState.Error -> {
-                        binding.progressBar.isVisible = false
-
+                        binding.swipeRefreshLayout.isRefreshing = false
+                        binding.viewClickController.isVisible = false
                     }
                 }
             }
