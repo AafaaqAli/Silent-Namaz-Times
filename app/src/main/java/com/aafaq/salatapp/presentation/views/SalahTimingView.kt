@@ -29,7 +29,7 @@ class SalahTimingView @JvmOverloads constructor(
     }
 
     fun setSalahMenuItems(
-        data: ArrayList<Data>,
+        data: List<Data>,
         salahTimeClickListener: SalahTimeClickListener? = null){
 
         binding.recyclerViewSalahTime.apply {
@@ -46,7 +46,7 @@ class SalahTimingView @JvmOverloads constructor(
 
 private class SalahTimeAdapter(
     val context: Context,
-    val data: ArrayList<Data>,
+    val data: List<Data>,
     val sideMenuItemListener: SalahTimeClickListener? = null,
     val binding: SalahTimeRecyclerViewBinding
 ): RecyclerView.Adapter<SalahTimeAdapter.ViewHolder>(){
@@ -81,7 +81,7 @@ private class SalahTimeAdapter(
         holder.textViewMinutes.text = "25"
         holder.textViewStreaks.text = "10"
         holder.textViewButtonState.text = "Confirmed"
-        holder.textViewSalahHeading.text = "Test 123"
+        holder.textViewSalahHeading.text = currentItem.timings?.Fajr
         holder.textViewSalahTimeRemaining.text = "3 Hours Remaining in Salah"
 
         //set animations

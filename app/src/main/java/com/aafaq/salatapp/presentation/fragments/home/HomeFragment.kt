@@ -7,11 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import com.aafaq.core.data.models.UIState
+import com.aafaq.network.data.models.GeneralResponse
 import com.aafaq.network.data.models.salah.Data
+import com.aafaq.network.data.models.salah.Location
+import com.aafaq.network.data.models.salah.Methods
 import com.aafaq.salatapp.databinding.FragmentHomeBinding
 import com.aafaq.salatapp.presentation.views.SalahTimeClickListener
+import com.aafaq.salatapp.utils.deligations.navigation.INavigationHelper
+import com.aafaq.salatapp.utils.deligations.navigation.NavigationHelperImp
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-class HomeFragment : Fragment() {
+@AndroidEntryPoint
+class HomeFragment: Fragment(), INavigationHelper by NavigationHelperImp() {
 
     /**
      * view model
@@ -38,40 +52,69 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding.lifecycleOwner = this
 
-        initSalahTimeView()
+        handleUiState()
     }
 
-    private fun initSalahTimeView(){
+    private fun handleUiState() {
+        lifecycleScope.launch {
+            viewModel.homeStateFlow.collectLatest { state ->
+                when (state) {
+                    is UIState.Empty -> {
+                        binding.progressBar.isVisible = false
+                        /**
+                         * do API Call when started
+                         * */
+
+                        /**
+                         * TODO Create a Util for creating Params
+                         * */
+                        viewModel.getCalender(
+                            2023,
+                            5,
+                            Location(
+                                33.6844,
+                                73.0479
+                            ),
+                            Methods.JAFARI
+                        )
+                    }
+
+                    is UIState.Loading -> {
+                        binding.progressBar.isVisible = true
+                    }
+
+                    is UIState.Success -> {
+                        binding.progressBar.isVisible = false
+
+                        state.response?.data?.let {
+                            initSalahTimeView(it)
+                        }
+                    }
+
+                    is UIState.Error -> {
+                        binding.progressBar.isVisible = false
+
+                    }
+                }
+            }
+        }
+    }
+
+    private fun initSalahTimeView(listOfData: List<Data>) {
         binding.salahTimeView.setSalahMenuItems(
-         arrayListOf(
-             Data(
+            listOfData, salahTimeClickListener = object : SalahTimeClickListener {
+                override fun onItemClicked(item: Data, position: Int) {
+                    Toast.makeText(requireContext(), "Click On Position: $position", Toast.LENGTH_SHORT).show()
+                }
 
-             ),
-             Data(
-
-             ),
-
-             Data(
-
-             ),
-
-             Data(
-
-             ),
-
-             Data(
-
-             ),
-         )
-        ,salahTimeClickListener = object : SalahTimeClickListener{
-            override fun onItemClicked(item: Data, position: Int) {
-                Toast.makeText(requireContext(), "Click On Position: $position", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onItemLongClicked(item: Data, position: Int) {
-                Toast.makeText(requireContext(), "LongClick On Position: $position", Toast.LENGTH_SHORT).show()
-            }
-        })
+                override fun onItemLongClicked(item: Data, position: Int) {
+                    Toast.makeText(
+                        requireContext(),
+                        "LongClick On Position: $position",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
     }
 
     override fun onDestroyView() {

@@ -6,6 +6,7 @@ import com.aafaq.network.domain.repository.SalahTimeNetworkRepository
 import com.aafaq.network.domain.usecases.*
 import com.aafaq.network.domain.utils.NetworkConstants
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +22,9 @@ import javax.inject.Singleton
 object NetworkModule {
     @Singleton
     @Provides
-    fun providesMoshi() = Moshi.Builder().build()
+    fun providesMoshi() = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 
 
     @Singleton
@@ -46,6 +49,10 @@ object NetworkModule {
         .baseUrl(NetworkConstants.AlAdan.BASE_URL)
         .client(okHttpClient)
         .build()
+
+    @Singleton
+    @Provides
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
     @Singleton
     @Provides

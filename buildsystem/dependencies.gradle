@@ -42,6 +42,7 @@ ext {
 
             //network
             moshi             : "2.4.0",
+            moshi_dependency  : "1.14.0",
             retrofit          : "2.9.0",
             okhttp_interceptor: "5.0.0-alpha.2",
 
@@ -98,6 +99,8 @@ ext {
             shimmer           : "com.facebook.shimmer:shimmer:${versions.shimmer}",
             rmswitch          : "com.rm:rmswitch:${versions.rmswitch}",
             moshi             : "com.squareup.retrofit2:converter-moshi:${versions.moshi}",
+            moshi_dependency  : "com.squareup.moshi:moshi-kotlin:${versions.moshi_dependency}",
+            moshi_kotlin      : "com.squareup.moshi:moshi-kotlin:${versions.moshi_dependency}",
             retrofit          : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
             okhttp_interceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_interceptor}",
             ssp               : "com.intuit.ssp:ssp-android:${versions.ssp}",

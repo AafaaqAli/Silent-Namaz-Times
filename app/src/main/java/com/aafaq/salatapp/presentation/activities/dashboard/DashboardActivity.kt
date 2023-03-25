@@ -6,7 +6,9 @@ import androidx.activity.viewModels
 import com.aafaq.salatapp.databinding.ActivityDashboardBinding
 import com.aafaq.salatapp.utils.deligations.navigation.INavigationHelper
 import com.aafaq.salatapp.utils.deligations.navigation.NavigationHelperImp
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DashboardActivity : AppCompatActivity(), INavigationHelper by NavigationHelperImp() {
     /**
      * View binding
