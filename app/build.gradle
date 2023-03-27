@@ -153,4 +153,15 @@ dependencies {
 
     //easy permission
     implementation external.easy_permission
+
+
+    //flipper
+    debugImplementation flipper.flipper
+    debugImplementation flipper.soloader
+    debugImplementation flipper.fresco
+    debugImplementation flipper.litho
+    debugImplementation flipper.litho_anotations
+    debugImplementation flipper.network
+
+    releaseImplementation flipper.noop
 }
