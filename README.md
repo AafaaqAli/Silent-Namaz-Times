@@ -15,6 +15,8 @@
 5) Notification Management,
 6) Remove Service in favour of WorkManager
 7) Separation of concerns
+8) Add Streak
+9) Add Firebase and friends connectivity
 
 
 ## Working
