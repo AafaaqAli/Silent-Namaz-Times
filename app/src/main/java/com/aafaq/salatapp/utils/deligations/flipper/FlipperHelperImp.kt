@@ -1,18 +1,15 @@
 package com.aafaq.salatapp.utils.deligations.flipper
 
 import android.app.Application
-import com.aafaq.salatapp.di.NetworkModule
+import com.aafaq.salatapp.BuildConfig
 import com.facebook.flipper.android.AndroidFlipperClient
+import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.crashreporter.CrashReporterPlugin
 import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin
-import com.facebook.flipper.plugins.fresco.FrescoFlipperPlugin
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
 import com.facebook.flipper.plugins.navigation.NavigationFlipperPlugin
-import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
-import com.facebook.flipper.plugins.sandbox.SandboxFlipperPlugin
-import com.facebook.flipper.plugins.sandbox.SandboxFlipperPluginStrategy
 import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin
 import com.facebook.litho.config.ComponentsConfiguration
 import com.facebook.litho.editor.flipper.LithoFlipperDescriptors
@@ -31,8 +28,24 @@ class FlipperHelperImp: IFlipperHelper {
         this.application = application
         SoLoader.init(this.application, false)
 
-        addPlugins()
+
+
+        if(BuildConfig.DEBUG){
+            val client = AndroidFlipperClient.getInstance(application)
+
+            /**
+             * Add plugins
+             * */
+            addPlugins()
+
+            /**
+             * Start Client
+             * */
+            client.start()
+        }
     }
+
+
 
 
     private val networkFlipperPlugin = NetworkFlipperPlugin()
@@ -44,9 +57,6 @@ class FlipperHelperImp: IFlipperHelper {
 
             //database inspector
             addPlugin(DatabasesFlipperPlugin(application))
-
-            //image inspector
-            addPlugin(FrescoFlipperPlugin())
 
             //navigation inspector
             addPlugin(NavigationFlipperPlugin.getInstance())
