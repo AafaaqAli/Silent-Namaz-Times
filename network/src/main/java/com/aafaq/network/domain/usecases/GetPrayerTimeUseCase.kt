@@ -2,8 +2,8 @@ package com.aafaq.network.domain.usecases
 
 import com.aafaq.network.ApiService
 import com.aafaq.network.data.models.GeneralResponse
-import com.aafaq.network.data.models.Salah.Location
-import com.aafaq.network.data.models.Salah.Methods
+import com.aafaq.network.data.models.salah.Location
+import com.aafaq.network.data.models.salah.Methods
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

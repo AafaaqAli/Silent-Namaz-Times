@@ -1,10 +1,15 @@
 plugins {
     id 'com.android.library'
+    id 'dagger.hilt.android.plugin'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
 }
 
 android {
+    def KEY_STORE_PASSWORD
+    def KEY_STORE
+    def KEY_STORE_ALIAS
+
     namespace 'com.aafaq.database'
 
     compileSdkVersion buildConfigs.compileSdk
@@ -12,22 +17,78 @@ android {
     defaultConfig {
         minSdkVersion buildConfigs.minimumSdk
         targetSdkVersion buildConfigs.targetSdk
-        versionCode buildConfigs.code
-        versionName buildConfigs.name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
+    /**
+     * local.properties must exist to ensure, the build system to process and compile
+     * */
+    Properties properties = new Properties()
+    if (rootProject.file("local.properties").exists() && project.getName().contains("release")) {
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        /**
+         * RELEASE
+         * */
+        KEY_STORE_PASSWORD = properties.getProperty('KEY_PASSOWORD')
+        KEY_STORE = '../buildsystem/keystores/affwan_release.jks'
+        KEY_STORE_ALIAS = properties.getProperty('KEY_ALIAS')
+
+    } else {
+        /**
+         * DEBUG
+         * */
+        KEY_STORE = '../buildsystem/keystores/affwan_debug.jks'
+        KEY_STORE_PASSWORD = 'development'
+        KEY_STORE_ALIAS = 'affwan'
+    }
+
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            storeFile file(KEY_STORE)
+            storePassword KEY_STORE_PASSWORD
+            keyAlias KEY_STORE_ALIAS
+            keyPassword KEY_STORE_PASSWORD
+        }
+
+        debug {
+            storeFile file(KEY_STORE)
+            storePassword KEY_STORE_PASSWORD
+            keyAlias KEY_STORE_ALIAS
+            keyPassword KEY_STORE_PASSWORD
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+
+    buildTypes {
+        debug {
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+
+        qa {
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_18
+        targetCompatibility JavaVersion.VERSION_18
+    }
+
+    kotlinOptions {
+        jvmTarget = 18
+    }
+
 }
 
 dependencies {
@@ -44,4 +105,8 @@ dependencies {
     implementation androidx.room_runtime
     implementation androidx.room_ktx
     kapt androidx.room_kapt
+
+    //hilt
+    implementation dagger.hilt
+    kapt dagger.hiltkapt
 }

@@ -1,16 +1,32 @@
 package com.aafaq.salatapp.di
 
 import com.aafaq.network.ApiService
+import com.aafaq.network.data.repository.SalahNetworkRepositoryImp
+import com.aafaq.network.domain.repository.SalahTimeNetworkRepository
 import com.aafaq.network.domain.usecases.*
 import com.aafaq.network.domain.utils.NetworkConstants
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
+@InstallIn(SingletonComponent::class)
+@Module
 object NetworkModule {
+    @Singleton
+    @Provides
+    fun providesMoshi() = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
+
     @Singleton
     @Provides
     fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()
@@ -28,11 +44,15 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(MoshiConverterFactory.create())
+    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(NetworkConstants.AlAdan.BASE_URL)
         .client(okHttpClient)
         .build()
+
+    @Singleton
+    @Provides
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
     @Singleton
     @Provides
@@ -48,5 +68,11 @@ object NetworkModule {
             GetPrayerTimeByCityUseCase(apiService),
             GetPrayerTimeUseCase(apiService)
         )
+    }
+
+    @Singleton
+    @Provides
+    fun providesHomeSalahNetworkRepository(useCases: UseCases): SalahTimeNetworkRepository {
+        return SalahNetworkRepositoryImp(useCases)
     }
 }

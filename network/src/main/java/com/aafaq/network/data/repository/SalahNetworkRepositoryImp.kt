@@ -1,11 +1,12 @@
 package com.aafaq.network.data.repository
 
 import com.aafaq.network.data.models.GeneralResponse
-import com.aafaq.network.data.models.Salah.Location
-import com.aafaq.network.data.models.Salah.Methods
+import com.aafaq.network.data.models.salah.Location
+import com.aafaq.network.data.models.salah.Methods
 import com.aafaq.network.domain.repository.SalahTimeNetworkRepository
 import com.aafaq.network.domain.usecases.UseCases
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 
 class SalahNetworkRepositoryImp(
     private val useCases: UseCases
