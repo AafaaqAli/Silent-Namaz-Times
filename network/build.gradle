@@ -16,8 +16,6 @@ android {
     defaultConfig {
         minSdkVersion buildConfigs.minimumSdk
         targetSdkVersion buildConfigs.targetSdk
-        versionCode buildConfigs.code
-        versionName buildConfigs.name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -64,29 +62,32 @@ android {
     buildTypes {
         debug {
             debuggable true
-            crunchPngs true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
 
         qa {
             debuggable false
-            crunchPngs false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
 
         release {
             debuggable false
-            crunchPngs false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_18
+        targetCompatibility JavaVersion.VERSION_18
     }
+
+    kotlinOptions {
+        jvmTarget = 18
+    }
+
 }
 
 dependencies {
