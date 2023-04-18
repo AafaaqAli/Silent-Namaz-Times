@@ -3,7 +3,7 @@ package com.aafaq.network.domain.utils
 sealed class NetworkConstants {
     object AlAdan {
         private const val API_VERSION = "v1"
-        const val BASE_URL = "http://api.aladhan.com/${API_VERSION}"
+        const val BASE_URL = "http://api.aladhan.com/${API_VERSION}/"
 
         /**
          * Refer to https://aladhan.com/prayer-times-api

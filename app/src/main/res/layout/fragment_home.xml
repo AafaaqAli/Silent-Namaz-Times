@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.fragments.home.HomeFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.aafaq.salatapp.presentation.fragments.home.HomeViewModel" />
     </data>
 
-    <RelativeLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:indeterminateTint="@color/blue_darker"
+        app:onRefreshListener="@{() -> viewModel.getCalender()}">
 
-      <com.aafaq.salatapp.presentation.views.SalahTimingView
-          android:id="@+id/salah_time_view"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"/>
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.aafaq.salatapp.presentation.views.SalahTimingView
+                android:id="@+id/salah_time_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <View
+                android:id="@+id/view_click_controller"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:focusable="true" />
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

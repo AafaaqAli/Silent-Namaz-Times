@@ -94,17 +94,17 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_18
+        targetCompatibility JavaVersion.VERSION_18
+    }
+
+    kotlinOptions {
+        jvmTarget = 18
     }
 }
 
 dependencies {
     api project(path: ':core')
-
-    //hilt
-    implementation dagger.hilt
-    kapt dagger.hiltkapt
 
     //test
     testImplementation test.junit
@@ -133,6 +133,10 @@ dependencies {
     implementation androidx.navigationui
     implementation androidx.fragment
 
+    //hilt
+    implementation dagger.hilt
+    kapt dagger.hiltkapt
+
     //only
     implementation external.only
 
@@ -150,4 +154,18 @@ dependencies {
     //multi density
     implementation external.ssp
     implementation external.sdp
+
+    //easy permission
+    implementation external.easy_permission
+
+
+    //flipper
+    debugImplementation flipper.flipper
+    debugImplementation flipper.soloader
+    releaseImplementation flipper.noop
+
+    debugImplementation flipper.litho
+    debugImplementation flipper.litho_anotations
+    debugImplementation flipper.network
+    debugImplementation flipper.retrofit_protobuf
 }

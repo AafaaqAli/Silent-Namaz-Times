@@ -42,6 +42,7 @@ ext {
 
             //network
             moshi             : "2.4.0",
+            moshi_dependency  : "1.14.0",
             retrofit          : "2.9.0",
             okhttp_interceptor: "5.0.0-alpha.2",
 
@@ -57,6 +58,35 @@ ext {
             //multi density
             ssp               : "1.1.0",
             sdp               : "1.1.0",
+
+            easy_permission   : "3.0.0",
+
+
+            //flipper
+            flipper           : "0.187.0",
+            soloader          : "0.10.5",
+            noop              : "0.187.0",
+            fresco            : "0.30.1",
+            litho             : "0.187.0",
+            litho_anotations  : "0.19.0",
+            flipperNetwork    : "0.187.0",
+            flipperRetrofit2  : "0.91.2",
+
+    ]
+
+    flipper = [
+            flipper          : "com.facebook.flipper:flipper:${versions.flipper}",
+            soloader         : "com.facebook.soloader:soloader:${versions.soloader}",
+            noop             : "com.facebook.flipper:flipper-noop:${versions.noop}",
+
+            //image
+            fresco           : "com.facebook.flipper:flipper-fresco-plugin:${versions.fresco}",
+
+            //layout inspector
+            litho            : "com.facebook.flipper:flipper-litho-plugin:${versions.litho}",
+            litho_anotations : "com.facebook.litho:litho-annotations:${versions.litho_anotations}",
+            network          : "com.facebook.flipper:flipper-network-plugin:${versions.flipperNetwork}",
+            retrofit_protobuf: "com.facebook.flipper:flipper-retrofit2-protobuf-plugin:${versions.flipperRetrofit2}",
     ]
 
     androidx = [
@@ -98,9 +128,12 @@ ext {
             shimmer           : "com.facebook.shimmer:shimmer:${versions.shimmer}",
             rmswitch          : "com.rm:rmswitch:${versions.rmswitch}",
             moshi             : "com.squareup.retrofit2:converter-moshi:${versions.moshi}",
+            moshi_dependency  : "com.squareup.moshi:moshi-kotlin:${versions.moshi_dependency}",
+            moshi_kotlin      : "com.squareup.moshi:moshi-kotlin:${versions.moshi_dependency}",
             retrofit          : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
             okhttp_interceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_interceptor}",
             ssp               : "com.intuit.ssp:ssp-android:${versions.ssp}",
-            sdp               : "com.intuit.sdp:sdp-android:${versions.sdp}"
+            sdp               : "com.intuit.sdp:sdp-android:${versions.sdp}",
+            easy_permission   : "pub.devrel:easypermissions:${versions.easy_permission}"
     ]
 }

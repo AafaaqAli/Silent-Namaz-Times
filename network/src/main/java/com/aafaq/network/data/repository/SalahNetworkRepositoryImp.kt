@@ -6,6 +6,7 @@ import com.aafaq.network.data.models.salah.Methods
 import com.aafaq.network.domain.repository.SalahTimeNetworkRepository
 import com.aafaq.network.domain.usecases.UseCases
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 
 class SalahNetworkRepositoryImp(
     private val useCases: UseCases

@@ -5,7 +5,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.aafaq.salatapp.R
 
 
-class NavigationHelperImp: INavigationHelper {
+class NavigationHelperImp : INavigationHelper {
     lateinit var activity: AppCompatActivity
 
     private val navController by lazy {
@@ -25,19 +25,21 @@ class NavigationHelperImp: INavigationHelper {
      * navigation features and there should be only one entry/exit point
      * */
     override fun navigateTo(navigation: Navigation?) {
-        try{
-            when(navigation){
+        try {
+            when (navigation) {
                 Navigation.HOME -> navController.navigate(R.id.homeFragment)
                 Navigation.SETTING -> navController.navigate(R.id.settingFragment)
+                Navigation.PROFILE -> navController.navigate(R.id.profileFragment)
                 else -> navController.navigate(R.id.homeFragment)
             }
-        }catch (e: java.lang.Exception){
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
     }
 }
 
-enum class Navigation{
+enum class Navigation {
     HOME(),
+    PROFILE(),
     SETTING(),
 }

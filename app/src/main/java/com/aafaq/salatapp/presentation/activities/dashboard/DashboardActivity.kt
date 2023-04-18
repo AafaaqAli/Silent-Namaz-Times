@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.aafaq.salatapp.databinding.ActivityDashboardBinding
+import com.aafaq.salatapp.utils.deligations.location.ILocationHelper
+import com.aafaq.salatapp.utils.deligations.location.LocationHelperImp
 import com.aafaq.salatapp.utils.deligations.navigation.INavigationHelper
 import com.aafaq.salatapp.utils.deligations.navigation.NavigationHelperImp
+import com.aafaq.salatapp.utils.deligations.permissions.IPermissionHelper
+import com.aafaq.salatapp.utils.deligations.permissions.PermissionHelperImp
+import dagger.hilt.android.AndroidEntryPoint
 
-class DashboardActivity : AppCompatActivity(), INavigationHelper by NavigationHelperImp() {
+@AndroidEntryPoint
+class DashboardActivity : AppCompatActivity(), IPermissionHelper by PermissionHelperImp(), INavigationHelper by NavigationHelperImp() {
     /**
      * View binding
      * */
@@ -30,5 +36,10 @@ class DashboardActivity : AppCompatActivity(), INavigationHelper by NavigationHe
          * Init navigation
          * */
         initNavigation(this)
+
+        /**
+         * Requests Permissions from user through delegate
+         * */
+        requestPermissions(this)
     }
 }
