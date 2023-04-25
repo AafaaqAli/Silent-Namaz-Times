@@ -71,7 +71,8 @@ ext {
             litho_anotations  : "0.19.0",
             flipperNetwork    : "0.187.0",
             flipperRetrofit2  : "0.91.2",
-
+            leakCanary        : "2.10",
+            "leakCanary_flipper" : "0.189.0"
     ]
 
     flipper = [
@@ -134,6 +135,8 @@ ext {
             okhttp_interceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_interceptor}",
             ssp               : "com.intuit.ssp:ssp-android:${versions.ssp}",
             sdp               : "com.intuit.sdp:sdp-android:${versions.sdp}",
-            easy_permission   : "pub.devrel:easypermissions:${versions.easy_permission}"
+            easy_permission   : "pub.devrel:easypermissions:${versions.easy_permission}",
+            leakCanary        : "com.squareup.leakcanary:leakcanary-android:${versions.leakCanary}",
+            leakCanary_flipper: "com.facebook.flipper:flipper-leakcanary2-plugin:${versions.leakCanary_flipper}"
     ]
 }

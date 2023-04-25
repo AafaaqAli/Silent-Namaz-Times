@@ -3,10 +3,12 @@ package com.aafaq.salatapp.presentation.fragments.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aafaq.core.data.models.UIState
+import com.aafaq.core.domain.utils.DateOutputFormat
+import com.aafaq.core.domain.utils.getCurrentDate
 import com.aafaq.network.data.models.GeneralResponse
 import com.aafaq.network.data.models.salah.Location
 import com.aafaq.network.data.models.salah.Methods
-import com.aafaq.network.domain.repository.SalahTimeNetworkRepository
+import com.aafaq.network.domain.repository.ISalahTimeNetworkRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -16,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val networkRepository: SalahTimeNetworkRepository
+    private val networkRepository: ISalahTimeNetworkRepository
 ): ViewModel() {
 
     /**
