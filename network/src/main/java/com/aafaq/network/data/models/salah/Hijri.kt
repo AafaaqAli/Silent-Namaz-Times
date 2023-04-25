@@ -7,9 +7,9 @@ data class Hijri(
     var date: String? = null,
     var format: String? = null,
     var day: String? = null,
-    var weekday: Weekday? = Weekday(),
+    var weekday: Weekday? = null,
     var month: Month? = Month(),
     var year: String? = null,
-    var designation: Designation? = Designation(),
-    var holidays: List<String> = listOf()
+    var designation: Designation? = null,
+    var holidays: List<String>? = null
 )
