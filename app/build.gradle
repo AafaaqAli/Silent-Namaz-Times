@@ -168,4 +168,6 @@ dependencies {
     debugImplementation flipper.litho_anotations
     debugImplementation flipper.network
     debugImplementation flipper.retrofit_protobuf
+    debugImplementation external.leakCanary
+    debugImplementation external.leakCanary_flipper
 }

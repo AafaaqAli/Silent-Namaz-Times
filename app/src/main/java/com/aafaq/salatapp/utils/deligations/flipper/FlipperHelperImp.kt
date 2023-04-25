@@ -3,7 +3,6 @@ package com.aafaq.salatapp.utils.deligations.flipper
 import android.app.Application
 import com.aafaq.salatapp.BuildConfig
 import com.facebook.flipper.android.AndroidFlipperClient
-import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.crashreporter.CrashReporterPlugin
 import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
@@ -14,7 +13,7 @@ import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPl
 import com.facebook.litho.config.ComponentsConfiguration
 import com.facebook.litho.editor.flipper.LithoFlipperDescriptors
 import com.facebook.soloader.SoLoader
-
+import leakcanary.LeakCanary
 
 
 class FlipperHelperImp: IFlipperHelper {
@@ -27,8 +26,6 @@ class FlipperHelperImp: IFlipperHelper {
     override fun initFlipper(application: Application) {
         this.application = application
         SoLoader.init(this.application, false)
-
-
 
         if(BuildConfig.DEBUG){
             val client = AndroidFlipperClient.getInstance(application)
@@ -44,9 +41,6 @@ class FlipperHelperImp: IFlipperHelper {
             client.start()
         }
     }
-
-
-
 
     private val networkFlipperPlugin = NetworkFlipperPlugin()
 
