@@ -10,10 +10,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.aafaq.core.data.models.UIState
-import com.aafaq.network.data.models.GeneralResponse
 import com.aafaq.network.data.models.salah.Data
-import com.aafaq.network.data.models.salah.Location
-import com.aafaq.network.data.models.salah.Methods
 import com.aafaq.salatapp.databinding.FragmentHomeBinding
 import com.aafaq.salatapp.presentation.views.SalahTimeClickListener
 import com.aafaq.salatapp.utils.deligations.navigation.INavigationHelper

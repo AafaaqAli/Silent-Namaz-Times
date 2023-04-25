@@ -7,6 +7,8 @@ import com.facebook.flipper.plugins.crashreporter.CrashReporterPlugin
 import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
+import com.facebook.flipper.plugins.leakcanary2.FlipperLeakEventListener
+import com.facebook.flipper.plugins.leakcanary2.LeakCanary2FlipperPlugin
 import com.facebook.flipper.plugins.navigation.NavigationFlipperPlugin
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin
@@ -29,6 +31,13 @@ class FlipperHelperImp: IFlipperHelper {
 
         if(BuildConfig.DEBUG){
             val client = AndroidFlipperClient.getInstance(application)
+
+            /**
+             * set the flipper listener in leak canary config
+             * */
+            LeakCanary.config = LeakCanary.config.run {
+                copy(eventListeners = eventListeners + FlipperLeakEventListener())
+            }
 
             /**
              * Add plugins
@@ -60,6 +69,9 @@ class FlipperHelperImp: IFlipperHelper {
 
             //network inspector
             addPlugin(networkFlipperPlugin)
+
+            //leak canary
+            addPlugin(LeakCanary2FlipperPlugin())
 
             //layout inspector
             ComponentsConfiguration.isDebugModeEnabled = true;

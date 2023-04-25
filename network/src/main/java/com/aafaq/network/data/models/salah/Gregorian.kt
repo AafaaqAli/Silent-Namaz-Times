@@ -7,8 +7,8 @@ data class Gregorian(
     var date: String? = null,
     var format: String? = null,
     var day: String? = null,
-    var weekday: Weekday? = Weekday(),
-    var month: Month? = Month(),
+    var weekday: Weekday? = null,
+    var month: Month? = null,
     var year: String? = null,
-    var designation: Designation? = Designation()
+    var designation: Designation? = null
 )

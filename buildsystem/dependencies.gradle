@@ -71,7 +71,8 @@ ext {
             litho_anotations  : "0.19.0",
             flipperNetwork    : "0.187.0",
             flipperRetrofit2  : "0.91.2",
-            leakCanary        : "2.10"
+            leakCanary        : "2.10",
+            "leakCanary_flipper" : "0.189.0"
     ]
 
     flipper = [
