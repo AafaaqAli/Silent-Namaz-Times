@@ -1,8 +1,8 @@
 package com.aafaq.salatapp.di
 
 import com.aafaq.network.ApiService
-import com.aafaq.network.data.repository.SalahNetworkRepositoryImp
-import com.aafaq.network.domain.repository.SalahTimeNetworkRepository
+import com.aafaq.network.data.repository.ISalahNetworkRepositoryImp
+import com.aafaq.network.domain.repository.ISalahTimeNetworkRepository
 import com.aafaq.network.domain.usecases.*
 import com.aafaq.network.domain.utils.NetworkConstants
 import com.squareup.moshi.Moshi
@@ -72,7 +72,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun providesHomeSalahNetworkRepository(useCases: UseCases): SalahTimeNetworkRepository {
-        return SalahNetworkRepositoryImp(useCases)
+    fun providesHomeSalahNetworkRepository(useCases: UseCases): ISalahTimeNetworkRepository {
+        return ISalahNetworkRepositoryImp(useCases)
     }
 }

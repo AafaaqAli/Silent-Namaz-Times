@@ -13,7 +13,8 @@ import com.aafaq.salatapp.utils.deligations.permissions.PermissionHelperImp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardActivity : AppCompatActivity(), IPermissionHelper by PermissionHelperImp(), INavigationHelper by NavigationHelperImp() {
+class DashboardActivity : AppCompatActivity(), IPermissionHelper by PermissionHelperImp(),
+    INavigationHelper by NavigationHelperImp() {
     /**
      * View binding
      * */
@@ -22,7 +23,7 @@ class DashboardActivity : AppCompatActivity(), IPermissionHelper by PermissionHe
     /**
      * View model
      * */
-    val fragmentContainerViewModel: DashboardViewModel by viewModels()
+    private val fragmentContainerViewModel: DashboardViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,8 @@ class DashboardActivity : AppCompatActivity(), IPermissionHelper by PermissionHe
         setContentView(binding.root)
 
         binding.lifecycleOwner = this
+        binding.viewModel = this.fragmentContainerViewModel
+
 
         /**
          * Init navigation

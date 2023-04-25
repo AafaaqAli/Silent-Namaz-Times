@@ -4,9 +4,8 @@ import com.aafaq.network.data.models.GeneralResponse
 import com.aafaq.network.data.models.salah.Location
 import com.aafaq.network.data.models.salah.Methods
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Response
 
-interface SalahTimeNetworkRepository {
+interface ISalahTimeNetworkRepository {
     suspend fun getCalendarByAddress(
         year: Int,
         month: Int?,
